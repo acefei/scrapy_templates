@@ -6,6 +6,7 @@ Templates for creating new projects with startproject command and new spiders wi
 Usage
 -----
 ::  
+
   $ scrapy-startproject
 
     scrapy startproject templates
@@ -26,6 +27,7 @@ Usage
 Installation
 ------------
 ::
+
   pip install https://github.com/acefei/scrapy_templates.git
 
 Licence
