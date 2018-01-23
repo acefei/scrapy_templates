@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+from scrapy.linkextractors import LinkExtractor
+from scrapy.spiders import Rule
+from scrapy_redis.spiders import RedisCrawlSpider
+
+
+class $classname(RedisCrawlSpider):
+    name = '$name'
+    redis_key = '$name:start_urls'
+
+    # Refer to https://doc.scrapy.org/en/latest/topics/spiders.html#crawling-rules
+    rules = (
+        Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
+    )
+
+    def __init__(self, *args, **kwargs):
+        # Dynamically define the allowed domains list.
+        domain = kwargs.pop('domain', '')
+        self.allowed_domains = filter(None, domain.split(','))
+        super($classname, self).__init__(*args, **kwargs)
+
+    def parse_item(self, response):
+        return {
+            'name': response.css('title::text').extract_first(),
+            'url': response.url,
+        }
+

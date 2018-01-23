@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+
+# Define here the models for your spider middleware
+#
+# See documentation in:
+# http://doc.scrapy.org/en/latest/topics/spider-middleware.html
+
+from scrapy import signals
+from fake_useragent import UserAgent
+
+class RandomUserAgentMiddleware(object):
+    def __init__(self, crawler):
+        self.ua = UserAgent()
+        self.ua_type = crawler.settings.get('UA_TYPE', 'random')
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler)
+
+    def process_request(self, request, spider):
+        def get_ua():
+            return getattr(self.ua, self.ua_type)
+
+        if 'mobile-ua' in request.meta:
+            request.headers.setdefault('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1')
+        else:
+            request.headers.setdefault('User-Agent', get_ua())
