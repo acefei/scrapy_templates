@@ -3,6 +3,17 @@ scrapy_templates
 
 Templates for creating new projects with startproject command and new spiders with genspider command.
 
+Installation
+------------
+::
+
+  pip install git+https://github.com/acefei/scrapy_templates.git
+  # or
+  pip install https://github.com/acefei/scrapy_templates/archive/master.zip
+  # update
+  pip install --upgrade git+https://github.com/acefei/scrapy_templates.git
+
+
 Usage
 -----
 ::  
@@ -15,12 +26,14 @@ Usage
     3 scrapy_redis_splash
     choice the template: 1
     specify the project name: trail
-    New Scrapy project 'trail', using template directory '/usr/lib/python2.7/site-packages/scrapy_templates-0.1.0-py2.7.egg/scrapy_templates/scrapy/project', created in:
-        /tmp/trail
+    New Scrapy project 'trail', using template directory '/usr/lib/python2.7/site-packages/scrapy_templates/scrapy/project', created in:
+        /home/acefei/trail
 
     You can start your first spider with:
         cd trail
         scrapy genspider example example.com
+
+    You can also use 'scrapy-genspider' to generate new spider with custom template.
 
     $ cd trail
     $ scrapy-genspider
@@ -36,18 +49,6 @@ Usage
     specify spider name: trail_spider
     Created spider 'trail_spider' using template 'redis_crawl' in module:
       trial.spiders.trail_spider
-
-
-Installation
-------------
-::
-
-  pip install git+https://github.com/acefei/scrapy_templates.git
-  # or
-  pip install https://github.com/acefei/scrapy_templates/archive/master.zip
-
-Licence
--------
 
 Authors
 -------

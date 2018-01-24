@@ -16,7 +16,7 @@ class ScrapyRun(object):
             print i+1, os.path.basename(proj)
 
     def startproject(self):
-        choice = int(raw_input("choice the template num: "))
+        choice = int(raw_input("choice the template: "))
         assert 0 < choice <= len(self._proj_list), 'Selection is out of range.'
         tmpl_path = self._proj_list[choice-1]
 
@@ -26,8 +26,10 @@ class ScrapyRun(object):
         cmd_str = "scrapy startproject {proj_name} -s TEMPLATES_DIR={tmpl_path}"
         cmd = cmd_str.format(**locals())
         # print cmd
-        cmdline.execute(cmd.split())
-        print 'You can also use scrapy-genspider to generate new spider with custom template.'
+        try:
+            cmdline.execute(cmd.split())
+        except SystemExit:
+            print "\nYou can also use scrapy-genspider to generate new spider with custom template."
 
     def show_spider_tmpls(self):
         print "\nscrapy genspider templates"
@@ -48,7 +50,7 @@ class ScrapyRun(object):
             print i+1, t
 
     def genspider(self):
-        choice = int(raw_input("choice the template num: "))
+        choice = int(raw_input("choice the template: "))
         assert 0 < choice <= len(self._spider_tmpls), 'Selection is out of range.'
         tmpl = self._spider_tmpls[choice-1]
 
@@ -70,4 +72,3 @@ def genspider():
     sr = ScrapyRun()
     sr.show_spider_tmpls()
     sr.genspider()
-
