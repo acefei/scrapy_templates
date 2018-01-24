@@ -28,7 +28,9 @@ Installation
 ------------
 ::
 
-  pip install https://github.com/acefei/scrapy_templates.git
+  pip install git+https://github.com/acefei/scrapy_templates.git
+  # or
+  pip install https://github.com/acefei/scrapy_templates/archive/master.zip
 
 Licence
 -------

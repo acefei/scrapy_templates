@@ -15,7 +15,10 @@ setuptools.setup(
     include_package_data=True,
 
     entry_points = {
-        'console_scripts': ['scrapy-startproject=scrapy_templates.command_line:main'],
+        'console_scripts': [
+            'scrapy-startproject=scrapy_templates.command_line:startproject',
+            'scrapy-genspider=scrapy_templates.command_line:genspider',
+        ],
     },
 
     install_requires=[
