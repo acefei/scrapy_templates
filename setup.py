@@ -16,7 +16,7 @@ setuptools.setup(
 
     entry_points = {
         'console_scripts': [
-            'scrapy-startproject=scrapy_templates.command_line:startproject',
+            'scrapy-startproject=scrapy_templates.command_line:startproj',
             'scrapy-genspider=scrapy_templates.command_line:genspider',
         ],
     },
